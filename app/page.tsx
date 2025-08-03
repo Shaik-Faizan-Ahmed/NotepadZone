@@ -142,67 +142,66 @@ export default function NotePadZone() {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-4">
-        <div className="text-center max-w-4xl mx-auto">
-          <p className={`text-lg mb-4 ${isDark ? "text-gray-300" : "text-gray-600"}`}>Welcome back!</p>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
-            NotePadZone
-          </h1>
-          <p className={`text-xl md:text-2xl italic ${isDark ? "text-gray-400" : "text-gray-500"}`}>
-            Where your notes and links stay safe.
-          </p>
-        </div>
-      </section>
+      {/* Combined Hero + Input Section (Side-by-Side Layout) */}
+<section className="min-h-screen grid grid-cols-1 md:grid-cols-2 px-4 py-16 relative">
+  {/* Yellow Notebook Background (Right Side Only) */}
+  <div
+    className="absolute inset-0 md:left-1/2 opacity-90 z-0"
+    style={{
+      backgroundColor: "#fef7cd",
+      backgroundImage: `
+        linear-gradient(to right, #dc2626 78px, transparent 78px),
+        repeating-linear-gradient(
+          transparent,
+          transparent 24px,
+          #374151 24px,
+          #374151 25px
+        )
+      `,
+      backgroundSize: "100% 25px",
+    }}
+  />
 
-      {/* Notebook Style Input Section */}
-      <section className="min-h-screen flex items-center justify-center px-4 py-16 relative">
-        {/* Classic Yellow Notebook Background */}
-        <div
-          className="absolute inset-0 opacity-90"
-          style={{
-            backgroundColor: "#fef7cd",
-            backgroundImage: `
-              linear-gradient(to right, #dc2626 78px, transparent 78px),
-              repeating-linear-gradient(
-                transparent,
-                transparent 24px,
-                #374151 24px,
-                #374151 25px
-              )
-            `,
-            backgroundSize: "100% 25px",
-          }}
-        />
+  {/* Left Side: Intro Text */}
+  <div className="z-10 flex flex-col items-center justify-center text-center px-4">
+    <p className={`text-lg mb-4 ${isDark ? "text-gray-300" : "text-gray-600"}`}>Welcome back!</p>
+    <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+      NotePadZone
+    </h1>
+    <p className={`text-xl italic ${isDark ? "text-gray-400" : "text-gray-500"}`}>
+      Where your notes and links stay safe.
+    </p>
+  </div>
 
-        {/* Content Container */}
-        <div className="w-full max-w-4xl mx-auto relative z-10">
-          <div className="bg-transparent p-8 ml-20">
-            <textarea
-              value={inputText}
-              onChange={(e) => setInputText(e.target.value)}
-              placeholder="Drop your thoughts here..."
-              className="w-full h-64 bg-transparent border-2 border-blue-400/30 rounded-lg outline-none resize-none font-mono text-lg leading-6 text-gray-800 placeholder-gray-600 shadow-lg focus:border-blue-500/50 focus:shadow-blue-500/25 focus:shadow-2xl transition-all duration-300"
-              style={{
-                fontFamily: "Courier New, monospace",
-                lineHeight: "25px",
-                paddingTop: "2px",
-                padding: "12px",
-              }}
-            />
-            <div className="flex justify-center mt-8">
-              <Button
-                onClick={addNote}
-                className={`px-8 py-3 rounded-full font-semibold transition-all duration-200 ${
-                  isDark ? "bg-[#4CAF50] hover:bg-[#66bb6a] text-white" : "bg-[#2e7d32] hover:bg-[#388e3c] text-white"
-                } shadow-lg hover:shadow-xl transform hover:scale-105`}
-              >
-                Add Note
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+  {/* Right Side: Notebook Input */}
+  <div className="z-10 flex flex-col justify-center items-center px-4">
+    <div className="w-full max-w-lg">
+      <textarea
+        value={inputText}
+        onChange={(e) => setInputText(e.target.value)}
+        placeholder="Drop your thoughts here..."
+        className="w-full h-64 bg-transparent border-2 border-blue-400/30 rounded-lg outline-none resize-none font-mono text-lg leading-6 text-gray-800 placeholder-gray-600 shadow-lg focus:border-blue-500/50 focus:shadow-blue-500/25 focus:shadow-2xl transition-all duration-300"
+        style={{
+          fontFamily: "Courier New, monospace",
+          lineHeight: "25px",
+          paddingTop: "2px",
+          padding: "12px",
+        }}
+      />
+      <div className="flex justify-center mt-6">
+        <Button
+          onClick={addNote}
+          className={`px-8 py-3 rounded-full font-semibold transition-all duration-200 ${
+            isDark ? "bg-[#4CAF50] hover:bg-[#66bb6a] text-white" : "bg-[#2e7d32] hover:bg-[#388e3c] text-white"
+          } shadow-lg hover:shadow-xl transform hover:scale-105`}
+        >
+          Add Note
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Text Entries Section */}
       <section className="px-4 py-16">
