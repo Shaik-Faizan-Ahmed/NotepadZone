@@ -88,7 +88,7 @@ export default function NotePadZone() {
 
   const deleteNote = async (id: string) => {
   const password = prompt("Enter password to delete:")
-  if (password === "delete") {
+  if (password === "gurunanda") {
     await deleteDoc(doc(db, "notes", id))
     if (selectedNote?.id === id) {
       setShowModal(false)
