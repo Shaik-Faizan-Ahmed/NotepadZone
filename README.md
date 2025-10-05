@@ -2,6 +2,8 @@
 
 A modern, cloud-synced note-taking application built with Next.js and Firebase. NotepadZone provides a clean, intuitive interface for creating, managing, and organizing your notes with real-time synchronization across devices.
 
+🚀 **Live Demo**: [https://notepad-zone.vercel.app/](https://notepad-zone.vercel.app/)
+
 ## Features
 
 - **Real-time Synchronization** - Notes are automatically synced across all devices using Firebase Firestore
